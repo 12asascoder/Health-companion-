@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mickey Health Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div class="mickey-container" id="mickeyContainer">
+        <div class="ear left-ear"></div>
+        <div class="ear right-ear"></div>
+        <div class="face" id="face">
+            <div class="status-message" id="statusMessage"></div>
+            <div class="response-text" id="responseText"></div>
+        </div>
+    </div>
+
+    <div id="mapContainer" style="display:none;"></div>
+
+    <script>
+        window.onload = function() {
+            const initialMessage = "{{ initial_message }}";
+            const utterance = new SpeechSynthesisUtterance(initialMessage);
+            window.speechSynthesis.speak(utterance);
+            document.getElementById('statusMessage').textContent = "Ready to help!";
+        };
+    </script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</body>
+</html>

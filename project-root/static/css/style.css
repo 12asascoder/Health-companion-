@@ -1,0 +1,144 @@
+body {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.mickey-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.face {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(145deg, #0074D9, #00BFFF);
+    border-radius: 50%;
+    position: absolute;
+    top: 75px;
+    left: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(0,116,217,0.5);
+    border: 3px solid #fff;
+}
+
+/* Listening animation */
+.face.listening {
+    animation: pulse-face 1.5s infinite;
+}
+
+@keyframes pulse-face {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.ear {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(145deg, #0064b9, #009fdf);
+    border-radius: 50%;
+    position: absolute;
+    border: 3px solid #fff;
+    box-shadow: 0 0 20px rgba(0,116,217,0.4);
+}
+
+.left-ear {
+    left: 30px;
+    top: -30px;
+    transform: rotate(-30deg);
+}
+
+.right-ear {
+    right: 30px;
+    top: -30px;
+    transform: rotate(30deg);
+}
+
+.status-message {
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.response-text {
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    max-width: 80%;
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+}
+
+#mapContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    border: 2px solid white;
+    display: none;
+}
+
+/* Fullscreen map styles */
+#mapContainer.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh !important;
+    width: 100vw !important;
+    z-index: 1000;
+    border-radius: 0;
+}
+
+/* Minimized Mickey styles */
+.mickey-container.minimized {
+    transform: scale(0.3) translate(-50%, -50%);
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Marker styles */
+.emergency-marker {
+    background: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: pulse 0.5s infinite;
+    border: 2px solid white;
+}
+
+.hospital-marker {
+    background: #00ff00;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* Animation keyframes */
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.8; }
+}
